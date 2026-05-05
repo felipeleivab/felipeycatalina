@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmación — Bautizo & Matrimonio Civil</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #f5f0eb; min-height: 100vh; padding: 2rem 1rem; }
+  .wrap { max-width: 540px; margin: 0 auto; }
+  .header { text-align: center; padding: 2rem 1.5rem 1.5rem; background: #fff; border-radius: 16px; margin-bottom: 1.5rem; border: 1px solid #e8e0d8; }
+  .cross { font-size: 22px; color: #a08060; margin-bottom: 0.5rem; }
+  .tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #a08060; margin-bottom: 0.5rem; }
+  .names { font-size: 22px; color: #3a2e28; margin-bottom: 0.25rem; }
+  .date-txt { font-size: 13px; color: #888; }
+  .divider { border: none; border-top: 1px solid #e8e0d8; margin: 1rem 0; }
+  .note { font-size: 13px; color: #888; font-style: italic; }
+  .card { background: #fff; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e8e0d8; }
+  .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #a08060; font-family: sans-serif; margin-bottom: 1rem; }
+  label.field { display: block; font-size: 13px; color: #888; font-family: sans-serif; margin-bottom: 6px; }
+  input[type="text"], input[type="email"] { width: 100%; padding: 10px 14px; border: 1px solid #e0d8d0; border-radius: 10px; font-size: 15px; font-family: sans-serif; color: #3a2e28; background: #faf8f5; margin-bottom: 1rem; outline: none; }
+  input[type="text"]:focus, input[type="email"]:focus { border-color: #a08060; }
+  .radio-opt { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border: 1px solid #e0d8d0; border-radius: 10px; cursor: pointer; margin-bottom: 8px; font-family: sans-serif; font-size: 14px; color: #3a2e28; background: #faf8f5; transition: all 0.15s; }
+  .radio-opt:hover { background: #f0ebe4; }
+  .radio-opt.selected { border-color: #a08060; background: #f5efe8; }
+  .radio-opt input { margin-top: 2px; accent-color: #a08060; flex-shrink: 0; }
+  .hidden { display: none; }
+  .btn-main { width: 100%; padding: 14px; font-size: 15px; font-family: sans-serif; font-weight: 600; background: #3a2e28; color: #fff; border: none; border-radius: 10px; cursor: pointer; margin-bottom: 1.5rem; letter-spacing: 1px; }
+  .btn-main:hover { background: #5a4840; }
+  .btn-mp { width: 100%; padding: 13px; font-size: 15px; font-family: sans-serif; font-weight: 600; background: #009EE3; color: #fff; border: none; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+  .btn-mp:hover { background: #0081bb; }
+  .or-line { display: flex; align-items: center; gap: 10px; margin: 1rem 0; font-size: 12px; color: #aaa; font-family: sans-serif; }
+  .or-line::before, .or-line::after { content: ''; flex: 1; border-top: 1px solid #e0d8d0; }
+  .bank-box { background: #faf8f5; border-radius: 10px; padding: 1rem; text-align: left; }
+  .bank-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #ede8e2; font-family: sans-serif; font-size: 13px; }
+  .bank-row:last-child { border-bottom: none; }
+  .bank-label { color: #888; }
+  .bank-value { font-weight: 600; color: #3a2e28; }
+  .btn-copy-all { width: 100%; margin-top: 1rem; padding: 11px; font-size: 14px; font-family: sans-serif; font-weight: 600; background: #fff; color: #3a2e28; border: 1.5px solid #c8b89a; border-radius: 10px; cursor: pointer; letter-spacing: 0.5px; }
+  .btn-copy-all:hover { background: #f5efe8; }
+  .btn-copy-all.copiado { background: #f0faf0; border-color: #7cb87c; color: #3a6e3a; }
+  .gift-note { text-align: center; font-size: 13px; color: #a08060; margin-top: 1rem; font-style: italic; }
+  .success-icon { font-size: 48px; margin-bottom: 1rem; }
+  .success-title { font-size: 22px; color: #3a2e28; margin-bottom: 0.5rem; }
+  .success-sub { font-size: 14px; color: #888; font-family: sans-serif; margin-bottom: 1rem; }
+  .menu-summary { background: #faf8f5; border-radius: 10px; padding: 1rem 1.25rem; text-align: left; font-family: sans-serif; font-size: 14px; color: #5a4840; line-height: 2; margin: 1rem 0; }
+  .regalo-title { font-size: 16px; color: #3a2e28; font-family: sans-serif; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+  .regalo-sub { font-size: 13px; color: #888; font-family: sans-serif; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="form-view">
+    <div class="header">
+      <div class="cross">✝</div>
+      <p class="tag">Bautizo & Matrimonio Civil</p>
+      <p class="names">Magdalena Paz · Felipe & Catalina</p>
+      <p class="date-txt">Sábado 6 de junio de 2026 · 12:00 hrs</p>
+      <hr class="divider">
+      <p class="note">Parroquia Nuestra Señora del Carmen, Placilla<br>Recepción: Pasaje Algarrobo Lote 12, Pullally</p>
+      <hr class="divider">
+      <p class="note">Por favor confirma tu asistencia antes del 20 de mayo</p>
+    </div>
+
+    <div class="card">
+      <p class="section-label">Tus datos</p>
+      <label class="field">Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Tu nombre completo" />
+      <label class="field">Email (opcional)</label>
+      <input type="email" id="email" placeholder="tu@email.com" style="margin-bottom:0;" />
+    </div>
+
+    <div class="card">
+      <p class="section-label">¿Asistirás?</p>
+      <label class="radio-opt" onclick="sel(this,'asistencia','si'); show('menus')">
+        <input type="radio" name="asistencia" value="si"> Sí, confirmo mi asistencia
+      </label>
+      <label class="radio-opt" onclick="sel(this,'asistencia','no'); hide('menus')">
+        <input type="radio" name="asistencia" value="no"> No podré asistir
+      </label>
+    </div>
+
+    <div id="menus" class="hidden">
+      <div class="card">
+        <p class="section-label">Entrada — ¿qué prefieres?</p>
+        <label class="radio-opt" onclick="sel(this,'entrada','camaron')">
+          <input type="radio" name="entrada" value="camaron"> Camarón salteado con champiñones en cama de palta
+        </label>
+        <label class="radio-opt" onclick="sel(this,'entrada','champiñon')">
+          <input type="radio" name="entrada" value="champiñon"> Champiñones salteados en cama de palta
+        </label>
+        <label class="radio-opt" onclick="sel(this,'entrada','hummus')">
+          <input type="radio" name="entrada" value="hummus"> Hummus con palta
+        </label>
+      </div>
+      <div class="card">
+        <p class="section-label">Plato de fondo — ¿qué prefieres?</p>
+        <label class="radio-opt" onclick="sel(this,'fondo','carne')">
+          <input type="radio" name="fondo" value="carne"> Carne al jugo con papas al horno
+        </label>
+        <label class="radio-opt" onclick="sel(this,'fondo','pescado')">
+          <input type="radio" name="fondo" value="pescado"> Pescado con papas al horno
+        </label>
+        <label class="radio-opt" onclick="sel(this,'fondo','zapallo')">
+          <input type="radio" name="fondo" value="zapallo"> Zapallo italiano relleno con verduras y papas al horno
+        </label>
+      </div>
+    </div>
+
+    <button class="btn-main" onclick="enviar()">Confirmar asistencia</button>
+  </div>
+
+  <div id="success-view" class="hidden">
+    <div class="card" style="text-align:center; padding: 2.5rem 1.5rem;">
+      <div class="success-icon">🌿</div>
+      <p class="success-title" id="s-title"></p>
+      <p class="success-sub" id="s-sub"></p>
+      <div class="menu-summary hidden" id="s-menu"></div>
+
+      <div id="s-regalo" class="hidden">
+        <hr class="divider" style="margin:1.5rem 0;">
+        <p class="regalo-title">🎁 ¿Quieres dejarnos un regalito?</p>
+        <p class="regalo-sub">¡No es obligatorio! Tu presencia es nuestro mayor regalo. Pero si deseas hacernos un gesto:</p>
+        <a class="btn-mp" href="https://link.mercadopago.cl/felipeycatalina" target="_blank">Pagar con Mercado Pago</a>
+        <div class="or-line">o transfiere directamente</div>
+        <div class="bank-box">
+          <div class="bank-row"><span class="bank-label">Nombre</span><span class="bank-value">Felipe Leiva Berrios</span></div>
+          <div class="bank-row"><span class="bank-label">RUT</span><span class="bank-value">18.449.524-4</span></div>
+          <div class="bank-row"><span class="bank-label">Banco</span><span class="bank-value">Banco de Chile</span></div>
+          <div class="bank-row"><span class="bank-label">Tipo</span><span class="bank-value">Cuenta corriente</span></div>
+          <div class="bank-row"><span class="bank-label">N° cuenta</span><span class="bank-value">1471077303</span></div>
+          <div class="bank-row"><span class="bank-label">Email</span><span class="bank-value" style="font-size:12px;">Felipe.leivaberrios@gmail.com</span></div>
+          <button class="btn-copy-all" id="btn-copy" onclick="copiarTodo()">📋 Copiar todos los datos</button>
+        </div>
+        <p class="gift-note">¡Gracias de corazón! 💛</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  var s = { asistencia:'', entrada:'', fondo:'' };
+  function sel(el, g, v) {
+    s[g] = v;
+    el.parentElement.querySelectorAll('.radio-opt').forEach(function(o){ o.classList.remove('selected'); });
+    el.classList.add('selected');
+  }
+  function show(id){ document.getElementById(id).classList.remove('hidden'); }
+  function hide(id){ document.getElementById(id).classList.add('hidden'); }
+
+  function copiarTodo() {
+    var datos = 
+      "Nombre: Felipe Leiva Berrios\n" +
+      "RUT: 18.449.524-4\n" +
+      "Banco: Banco de Chile\n" +
+      "Tipo: Cuenta corriente\n" +
+      "N° cuenta: 1471077303\n" +
+      "Email: Felipe.leivaberrios@gmail.com";
+    navigator.clipboard.writeText(datos).then(function(){
+      var btn = document.getElementById('btn-copy');
+      btn.textContent = '✅ ¡Datos copiados!';
+      btn.classList.add('copiado');
+      setTimeout(function(){
+        btn.textContent = '📋 Copiar todos los datos';
+        btn.classList.remove('copiado');
+      }, 3000);
+    });
+  }
+
+  function enviar() {
+    var n = document.getElementById('nombre').value.trim();
+    if (!n) { alert('Por favor ingresa tu nombre'); return; }
+    if (!s.asistencia) { alert('Por favor indica si asistirás'); return; }
+    if (s.asistencia === 'si' && (!s.entrada || !s.fondo)) { alert('Por favor selecciona tu entrada y plato de fondo'); return; }
+    hide('form-view');
+    show('success-view');
+    var eT = { camaron:'Camarón salteado con champiñones', 'champiñon':'Champiñones salteados', hummus:'Hummus con palta' };
+    var fT = { carne:'Carne al jugo', pescado:'Pescado', zapallo:'Zapallo italiano relleno con verduras' };
+    if (s.asistencia === 'no') {
+      document.getElementById('s-title').textContent = 'Gracias por avisarnos, ' + n;
+      document.getElementById('s-sub').textContent = 'Lamentamos que no puedas acompañarnos, ¡estarás en nuestros corazones ese día!';
+    } else {
+      document.getElementById('s-title').textContent = '¡Nos vemos el 6 de junio, ' + n + '!';
+      document.getElementById('s-sub').textContent = 'Tu confirmación fue registrada. ¡Será un día lleno de amor y alegría!';
+      var m = document.getElementById('s-menu');
+      m.innerHTML = '<strong>Tu menú confirmado:</strong><br>✦ Entrada: ' + eT[s.entrada] + '<br>✦ Fondo: ' + fT[s.fondo];
+      show('s-menu');
+      show('s-regalo');
+    }
+  }
+</script>
+</body>
+</html>
